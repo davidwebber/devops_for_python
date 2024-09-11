@@ -7,4 +7,10 @@ Source code for a talk given Sept 12, 2024 to the Madison Python meetup group.  
 
 These instructions assume Ubuntu 24.04
 
-   $ sudo apt install make ipython3
+   $ sudo apt install make ipython3 curl docker.io python3-venv
+   $ python3 -m venv .venv
+   $ . .venv/bin/activate
+   pip install -e dict_cache
+   pip install -e flask_app
+
+
