@@ -1,14 +1,9 @@
-
-import random
-import string
-
 cache = {}
 
 def set_value(key, value):
     cache[key] = value
     success = True
     return value, success
-
 
 def get_value(key):
     if key in cache.keys():
@@ -18,4 +13,3 @@ def get_value(key):
         value = None
         success = False
     return value, success
-
