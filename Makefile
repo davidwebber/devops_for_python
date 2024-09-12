@@ -5,11 +5,11 @@ flask-run:
 	flask --app flask_app run
 
 gunicorn-run:
-	gunicorn flask_app:app
+	gunicorn -w 1 flask_app:app
 
 docker-build:
 	docker build -t dict_cache dict_cache
-	docker build -t demo example_B
+	docker build -t demo flask_app
 
 docker-run:
 	docker run -p 5000:5000 demo

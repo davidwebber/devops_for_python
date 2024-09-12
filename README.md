@@ -7,10 +7,10 @@ Source code for a talk given Sept 12, 2024 to the Madison Python meetup group.  
 
 These instructions assume a command prompt on Ubuntu 24.04
 
-   $ sudo apt install make ipython3 curl docker.io python3-venv
+   $ sudo apt install make ipython3 curl docker.io python3-venv docker-compose-v2
    $ python3 -m venv .venv
    $ . .venv/bin/activate
    $ pip install ./dict_cache
    $ pip install ./flask_app
-
+   $ sudo snap install google-cloud-cli --classic
 
