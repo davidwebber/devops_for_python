@@ -1,0 +1,60 @@
+<html>
+<head>
+    <style>
+        table {
+          border: 1px solid;
+          font-family: "Courier New";
+        }
+    </style>
+    <script>
+        function submitForm(){
+            var formData = new FormData(document.querySelector('form'))
+            //let JSON = JSON.parse(JSON.stringify(Object.fromEntries(new FormData(document.querySelector('form')).entries())));
+            console.log(formData);  
+        }
+        function submitFormx() {
+            // adapted from https://stackoverflow.com/questions/17116532/post-json-data-from-form-without-ajax-->
+            var url = '/v1/key/' + $('$key').val();
+            $('#myform').attr('action', url);
+            var data = JSON.stringify({
+                "value": $('#value').val()
+            })
+            $('<input type="hidden" name="json"/>').val(data).appendTo('#myform');
+            $("#myform").submit();
+        }
+    </script>
+</head>
+<body>
+<h1>Simple Set/Get API</h1>
+
+<h2>Get a value</h2>
+
+<p>
+    To get a value, simply enter the key at the end of the URL.
+    For example, to get the value of key "a" visit the URL
+    <a href=http://localhost:5000/v1/key/a>
+        http://localhost:5000/v1/key/a
+    </a>
+</p>
+
+<p> 
+    You may also use curl.
+</p>
+<table><tr><td>
+$ curl localhost:5000/v1/key/a
+</td></tr></table>
+
+<h2>Set a value</h2>
+
+<p> To set a value, use the form below or curl. </p>
+<table><tr><td>
+$ curl  -X POST -d '{"value":"hello world"}' -H "Content-Type: application/json" http://localhost:5000/key/a
+</td></tr></table>
+
+<form id = "myform" method = "post">
+    key: <input type="text" id="key" name="key">
+    value: <input type="text" id="value" name="value">
+    <input type="button" id="submit" value="submit" onClick="submitForm()">
+</form>
+</body>
+</html>

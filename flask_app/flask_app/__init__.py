@@ -1,15 +1,17 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import dict_cache
 
-app = Flask(__name__)
+#app = Flask(__name__)
+app = Flask("flask_app")
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return render_template('index.html')
+    #"<p>Hello, World!</p>"
 
 #@app.route('set', methods=['GET', 'POST'])
-@app.route('/key/')
-@app.route('/key/<key>', methods=['GET', 'POST'])
+@app.route('/v1/key/')
+@app.route('/v1/key/<key>', methods=['GET', 'POST'])
 def key(key = None):
     
     if key is None:
