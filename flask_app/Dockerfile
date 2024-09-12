@@ -1,16 +1,12 @@
-#from python:3
 from dict_cache
 
-WORKDIR /app
-COPY requirements.txt /app
-COPY api.py /app
+WORKDIR /working/flask_app
 
-# COPY dict_cache /app
+# copy the current directory, ignoring files in .dockerignore
+COPY . ./
 
-RUN pip install -r requirements.txt
+RUN pip install .
 
 EXPOSE 5000
 
-CMD ["flask", "--app", "api", "run", "--host=0.0.0.0"]
-
-#CMD /bin/bash
+CMD ["flask", "--app", "flask_app", "run", "--host=0.0.0.0"]
