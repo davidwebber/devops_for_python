@@ -5,12 +5,12 @@ Source code for a talk given Sept 12, 2024 to the Madison Python meetup group.  
 
 ## Setup 
 
-These instructions assume Ubuntu 24.04
+These instructions assume a command prompt on Ubuntu 24.04
 
    $ sudo apt install make ipython3 curl docker.io python3-venv
    $ python3 -m venv .venv
    $ . .venv/bin/activate
-   pip install -e dict_cache
-   pip install -e flask_app
+   $ pip install ./dict_cache
+   $ pip install ./flask_app
 
 

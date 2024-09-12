@@ -32,8 +32,8 @@
 <p>
     To get a value, simply enter the key at the end of the URL.
     For example, to get the value of key "a" visit the URL
-    <a href=http://localhost:5000/v1/key/a>
-        http://localhost:5000/v1/key/a
+    <a href=/v1/key/a>
+        /v1/key/a
     </a>
 </p>
 
@@ -46,15 +46,16 @@ $ curl localhost:5000/v1/key/a
 
 <h2>Set a value</h2>
 
-<p> To set a value, use the form below or curl. </p>
+<p> To set a value, use <!-- the form below or --> curl. </p>
 <table><tr><td>
-$ curl  -X POST -d '{"value":"hello world"}' -H "Content-Type: application/json" http://localhost:5000/key/a
+$ curl  -X POST -d '{"value":"hello world"}' -H "Content-Type: application/json" http://localhost:5000/v1/key/a
 </td></tr></table>
-
+<!--
 <form id = "myform" method = "post">
     key: <input type="text" id="key" name="key">
     value: <input type="text" id="value" name="value">
     <input type="button" id="submit" value="submit" onClick="submitForm()">
 </form>
+-->
 </body>
 </html>
