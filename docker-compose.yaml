@@ -1,0 +1,8 @@
+services:
+    demo:
+        restart: unless-stopped
+        image: us-central1-docker.pkg.dev/devops-for-python/images/demo:latest
+        network_mode: host
+        build:
+            context: ./flask_app
+            dockerfile: Dockerfile
