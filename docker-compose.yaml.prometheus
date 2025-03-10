@@ -1,0 +1,44 @@
+services:
+    demo:
+        restart: unless-stopped
+        image: us-central1-docker.pkg.dev/devops-for-python/images/demo:latest
+        network_mode: host
+        build:
+            context: ./flask_app
+            dockerfile: Dockerfile
+
+    prometheus:
+        restart: unless-stopped
+        image:  prom/prometheus
+        ports:
+          - "9090:9090"
+        volumes:
+          - prometheus_data:/prometheus
+        #  - $PWD/prometheus.yml:/etc/prometheus/prometheus.yml
+
+    node_exporter:
+        image: quay.io/prometheus/node-exporter:latest
+        container_name: node_exporter
+        command:
+            - '--path.rootfs=/host'
+        network_mode: host
+        pid: host
+        restart: unless-stopped
+        volumes:
+            - '/:/host:ro,rslave'
+
+    alertmanager:
+        restart: unless-stopped
+        image: quay.io/prometheus/alertmanager
+        ports:
+          - "9093:9093"
+
+    blackbox-exporter:
+        restart: unless-stopped
+        image: quay.io/prometheus/blackbox-exporter:latest
+        ports:
+          - "9115:9115"
+          
+
+volumes:
+    prometheus_data:
